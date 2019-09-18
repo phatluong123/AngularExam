@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="new">
+  <h2>Know of a pet needing home?</h2>
+  <form (submit)="CreatePet($event)" #petForm ='ngForm'>
+    <div class="form-group">
+      <div>
+        <p class="errorMessage">{{duplicatedError}}</p>
+      </div>
+      <label>Pet name: </label>
+      <input name="name"
+             type="text"
+             class="form-control"
+             id="name"
+             [(ngModel)]="pet.name"
+             #name="ngModel"
+             placeholder="name"
+             minlength="3"
+             required
+      />
+      <div *ngIf="(name.touched || name.dirty) && name.errors">
+        <div *ngIf="name?.errors?.required" class="alert alert-danger">
+          You must enter a name for pet !
+        </div>
+        <div *ngIf="name?.errors?.minlength" class="alert alert-danger">
+          Name must be at least 3 characters
+          {{ name?.errors?.minlength.requiredLength }} characters
+        </div>
+      </div>
+
+    </div>
+    <div>
+      <p class="errorMessage">{{errorsMessage.name.message}}</p>
+    </div>
+    <div class="form-group">
+      <label>Pet type :</label>
+      <input name="type"
+             type="text"
+             class="form-control"
+             id="type"
+             [(ngModel)]="pet.type"
+             #type="ngModel"
+             placeholder="type"
+             minlength="3"
+             required
+      />
+      <div *ngIf="(type.touched || type.dirty) && type.errors">
+        <div *ngIf="type?.errors?.required" class="alert alert-danger">
+          You must enter a type for pet !
+        </div>
+        <div *ngIf="type?.errors?.minlength" class="alert alert-danger">
+          Type must be at least 3 characters
+          {{ type?.errors?.minlength.requiredLength }} characters
+        </div>
+      </div>
+      <div>
+        <p class="errorMessage">{{errorsMessage.type.message}}</p>
+      </div>
+    </div>
+    <div>
+      <label>Pet description:</label>
+      <input name="description"
+             type="text"
+             class="form-control"
+             id="description"
+             [(ngModel)]="pet.description"
+             #description="ngModel"
+             placeholder="description"
+             minlength="3"
+             required
+      />
+      <div *ngIf="(description.touched || description.dirty) && description.errors">
+        <div *ngIf="description?.errors?.required" class="alert alert-danger">
+          You must enter a type for pet !
+        </div>
+        <div *ngIf="description?.errors?.minlength" class="alert alert-danger">
+          Type must be at least 3 characters
+          {{ description?.errors?.minlength.requiredLength }} characters
+        </div>
+      </div>
+      <div>
+        <p class="errorMessage">{{errorsMessage.description.message}}</p>
+      </div>
+    </div>
+    <div class="skills">
+      <h5>Skills</h5>
+      <div class="form-group">
+        <label>Skill 1: </label>
+        <input name="skill1" class="form-control" [(ngModel)]="pet.skills[0]">
+      </div>
+      <div class="form-group">
+        <label>Skill 1: </label>
+        <input name="skill2" class="form-control" [(ngModel)]="pet.skills[1]">
+      </div>
+      <div class="form-group">
+        <label>Skill 1: </label>
+        <input name="skill3" class="form-control" [(ngModel)]="pet.skills[2]">
+      </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="petForm.invalid">Add Pet</button>
+    <button class="btn btn-danger" [routerLink] = "['']">Cancel</button>
+  </form>
+</div>
+

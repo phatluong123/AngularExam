@@ -1,0 +1,16 @@
+.root{
+  border: 2px solid red;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+.root h1{
+  font-size: 40pt;
+  color: salmon;
+  display: block;
+  display: inline-block;
+}
+.root a{
+  margin-left: 300px;
+  font-size: 20pt;
+  display: inline-block;
+}
